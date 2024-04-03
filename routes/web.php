@@ -36,11 +36,18 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/admin/all-category', 'index')->name('allcategory');
         Route::get('/admin/add-category', 'addCategory')->name('addcategory');
         Route::post('/admin/store-category', 'storeCategory')->name('storecategory');
+        Route::get('/admin/edit-category/{id}', 'editCategory')->name('editcategory');
+        Route::post('/admin/update-category', 'updateCategory')->name('updatecategory');
+        Route::get('/admin/delete-category/{id}', 'deleteCategory')->name('deletecategory');
     });
 
     Route::controller(SubCategoryController::class)->group(function(){
         Route::get('/admin/all-subcategory', 'index')->name('allsubcategory');
         Route::get('/admin/add-subcategory', 'addSubCategory')->name('addsubcategory');
+        Route::post('/admin/store-subcategory', 'storeSubCategory')->name('storesubcategory');
+        Route::get('/admin/edit-subcategory/{id}', 'editSubCategory')->name('editsubcategory');
+        Route::get('/admin/delete-subcategory/{id}', 'deleteSubCategory')->name('deletesubcategory');
+        Route::post('/admin/update-subcategory', 'updateSubCategory')->name('updatesubcategory');
     });
 
     Route::controller(ProductController::class)->group(function(){
