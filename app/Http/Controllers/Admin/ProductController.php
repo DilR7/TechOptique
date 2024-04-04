@@ -11,7 +11,8 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index(){
-        return view('admin.allproduct');
+        $products = Product::latest()->get();
+        return view('admin.allproduct', compact('products'));
     }
 
     public function addProduct(){
@@ -61,5 +62,68 @@ class ProductController extends Controller
         SubCategory::where('id', $subcategory_id)->increment('product_count', 1);
 
         return redirect()->route('allproducts')->with('message', 'Product Added Succesfully!');
+    }
+
+    public function editProductImg($id){
+        $product_info = Product::findOrFail($id);
+        return view('admin.editproductimg', compact('product_info'));
+    }
+
+    public function updateProductImg(Request $request){
+        $request->validate([
+            'product_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $id = $request->id;
+        $image = $request->file('product_img');
+        $image_name = hexdec(uniqid()).'.'. $image->getClientOriginalExtension();
+        $request->product_img->move(public_path('upload'),$image_name);
+        $image_url = 'upload/' . $image_name;
+
+        Product::findOrFail($id)->update([
+            'product_img' => $image_url,
+        ]);
+
+        return redirect()->route('allproducts')->with('message', 'Product Image Updated Succesfully!');
+    }
+
+    public function editProduct($id){
+        $product_info = Product::findOrFail($id);
+
+        return view('admin.editproduct', compact('product_info'));
+    }
+
+    public function updateProduct(Request $request){
+        $productid = $request->id;
+
+        $request->validate([
+            'product_name' => 'required|unique:products',
+            'price' => 'required',
+            'quantity' => 'required',
+            'product_short_des' => 'required',
+            'product_long_des' => 'required',
+        ]);
+
+        Product::findOrFail($productid)->update([
+            'product_name' => $request->product_name,
+            'product_short_des' => $request->product_short_des,
+            'product_long_des' => $request->product_long_des,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'slug' => strtolower(str_replace(' ','-', $request->product_name))
+        ]);
+
+        return redirect()->route('allproducts')->with('message', 'Product Information Updated Succesfully!');
+    }
+
+    public function deleteProduct($id){
+        $cat_id = Product::where('id', $id)->value('product_category_id');
+        $subcat_id = Product::where('id', $id)->value('product_subcategory_id');
+        Product::findOrFail($id)->delete();
+        Category::where('id', $cat_id)->decrement('product_count', 1);
+        Subcategory::where('id', $subcat_id)->decrement('product_count', 1);
+       
+         
+        return redirect()->route('allproducts')->with('message', 'Product Deleted Succesfully!');
     }
 }

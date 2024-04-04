@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-name">Select Categorry</label>
+                                <label class="col-sm-2 col-form-label" for="basic-default-name">Select Category</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" id="product_category_id" name="product_category_id"
                                         aria-label="Default select example">
