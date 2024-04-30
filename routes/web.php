@@ -21,6 +21,10 @@ use App\Http\Controllers\Admin\SubCategoryController;
 |
 */
 
+// Route::get('/', function(){
+//     return view('welcome');
+// });
+
 Route::controller(HomeController::class)->group(function (){
     Route::get('/', 'index')->name('Home');
 });

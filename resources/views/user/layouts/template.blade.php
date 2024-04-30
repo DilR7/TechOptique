@@ -1,3 +1,6 @@
+@php
+    $categories = App\Models\Category::latest()->get();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,9 +85,9 @@
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="index.html">Home</a>
-                        <a href="fashion.html">Fashion</a>
-                        <a href="electronic.html">Electronic</a>
-                        <a href="jewellery.html">Jewellery</a>
+                        @foreach ($categories as $category)
+                            <a href="fashion.html">{{ $category->category_name }}</a>
+                        @endforeach
                     </div>
                     <span class="toggle_icon" onclick="openNav()"><img
                             src="{{ asset('home/images/toggle-icon.png') }}"></span>
@@ -93,9 +96,9 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach ($categories as $category)
+                            <a class="dropdown-item" href="#">{{ $category->category_name }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="main">
@@ -147,7 +150,7 @@
     <!-- banner bg main end -->
 
     <!-- Common Part -->
-    <div class="container py-5">
+    <div class="container py-5" style="margin-top: 200px;">
         @yield('main-content')
     </div>
     <!-- End of Common Part -->
