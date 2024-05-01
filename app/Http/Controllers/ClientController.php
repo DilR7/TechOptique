@@ -33,6 +33,14 @@ class ClientController extends Controller
         return view('user.userprofile');
     }
 
+    public function pendingOrders(){
+        return view('user.pendingorders');
+    }
+
+    public function history(){
+        return view('user.history');
+    }
+
     public function newRelease(){
         return view('user.newrelease');
     }

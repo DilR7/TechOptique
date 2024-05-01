@@ -40,6 +40,18 @@ Route::controller(ClientController::class)->group(function (){
     Route::get('/customer-service', 'customerService')->name('customerservice');
 });
 
+Route::middleware(['auth', 'role:user'])->group(function(){
+    Route::controller(ClientController::class)->group(function (){
+        Route::get('/add-to-cart', 'addToCart')->name('addtocart');
+        Route::get('/checkout', 'checkout')->name('checkout');
+        Route::get('/user-profile', 'userProfile')->name('userprofile');
+        Route::get('/user-profile/pending-orders', 'pendingOrders')->name('pendingorders');
+        Route::get('/user-profile/history', 'history')->name('history');
+        Route::get('/todays-deal', 'todaysDeal')->name('todaysdeal');
+        Route::get('/customer-service', 'customerService')->name('customerservice');
+    });
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified', 'role:user'])->name('dashboard');
