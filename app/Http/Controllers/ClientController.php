@@ -14,8 +14,11 @@ class ClientController extends Controller
         return view('user.category', compact('category', 'products'));
     }
 
-    public function singleProduct(){
-        return view('user.product');
+    public function singleProduct($id){
+        $product = Product::findOrFail($id);
+        $subcat_id = Product::where('id', $id)->value('product_subcategory_id');
+        $related_products = Product::where('product_subcategory_id', $subcat_id)->latest()->get();
+        return view('user.product', compact('product', 'related_products'));
     }
     
     public function addToCart(){
