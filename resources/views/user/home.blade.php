@@ -26,7 +26,6 @@
                     </div>
                 </div>
             </div>
-          
         </div>
     </div>
     <!-- fashion section end -->
@@ -118,8 +117,8 @@
                                         <h4 class="shirt_text">Computers</h4>
                                         <p class="price_text">Start Price <span style="color: #262626;">$ 100</span>
                                         </p>
-                                        <div class="electronic_img"><img
-                                                src="{{ asset('home/images/computer-img.png') }}"></div>
+                                        <div class="electronic_img"><img src="{{ asset('home/images/computer-img.png') }}">
+                                        </div>
                                         <div class="btn_main">
                                             <div class="buy_bt"><a href="#">Buy Now</a></div>
                                             <div class="seemore_bt"><a href="#">See More</a></div>

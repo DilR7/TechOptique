@@ -55,7 +55,7 @@
                         <div class="custom_menu">
                             <ul>
                                 <li><a href="#">Best Sellers</a></li>
-                                <li><a href="{{ route('categorypage') }}">Gift Ideas</a></li>
+                                <li><a href="#">Gift Ideas</a></li>
                                 <li><a href="{{ route('newrelease') }}">New Releases</a></li>
                                 <li><a href="{{ route('todaysdeal') }}">Today's Deals</a></li>
                                 <li><a href="{{ route('customerservice') }}">Customer Service</a></li>
@@ -86,7 +86,7 @@
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="index.html">Home</a>
                         @foreach ($categories as $category)
-                            <a href="fashion.html">{{ $category->category_name }}</a>
+                            <a href="{{ route('categorypage', [$category->id, $category->slug]) }}">{{ $category->category_name }}</a>
                         @endforeach
                     </div>
                     <span class="toggle_icon" onclick="openNav()"><img
