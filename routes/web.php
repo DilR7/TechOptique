@@ -39,12 +39,17 @@ Route::middleware(['auth', 'role:user'])->group(function(){
     Route::controller(ClientController::class)->group(function (){
         Route::get('/add-to-cart', 'addToCart')->name('addtocart');
         Route::post('/add-product-to-cart', 'addProductToCart')->name('addproducttocart');
+        Route::get('/shipping-address', 'getShippingAddress')->name('shippingaddress');
+        Route::post('/add-shipping-address', 'addShippingAddress')->name('addshipingaddress');
+        Route::post('/place-order', 'placeOrder')->name('placeorder');
         Route::get('/checkout', 'checkout')->name('checkout');
         Route::get('/user-profile', 'userProfile')->name('userprofile');
         Route::get('/user-profile/pending-orders', 'pendingOrders')->name('pendingorders');
         Route::get('/user-profile/history', 'history')->name('history');
         Route::get('/todays-deal', 'todaysDeal')->name('todaysdeal');
         Route::get('/customer-service', 'customerService')->name('customerservice');
+        Route::get('/remove-cart-item/{id}', 'removeCartItem')->name('removeitem');
+        Route::get('/logout', 'logout')->name('logout');
     });
 });
 
@@ -55,6 +60,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(DashboardController::class)->group(function(){
         Route::get('/admin/dashboard', 'index')->name('admindashboard');
+        Route::get('/logout', 'logout')->name('logout');
     });
 
     Route::controller(CategoryController::class)->group(function(){
