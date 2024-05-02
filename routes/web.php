@@ -49,7 +49,6 @@ Route::middleware(['auth', 'role:user'])->group(function(){
         Route::get('/todays-deal', 'todaysDeal')->name('todaysdeal');
         Route::get('/customer-service', 'customerService')->name('customerservice');
         Route::get('/remove-cart-item/{id}', 'removeCartItem')->name('removeitem');
-        Route::get('/logout', 'logout')->name('logout');
     });
 });
 
