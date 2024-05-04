@@ -1,28 +1,29 @@
 @extends('admin.layouts.template')
 @section('page_title')
-    Add Category - TechOptique
+    Add Product - TechOptique
 @endsection
 @section('content')
-    <div class="container">
-        <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Page/</span> Add Category </h4>
-            <!-- Basic Layout -->
-            <div class="col-xxl">
-                <div class="card mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Add New Category</h5>
-                        <small class="text-muted float-end">Input Information</small>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Add Category</h4>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-0 p-0">
+                                <li class="breadcrumb-item"><a href="index.html" class="text-muted">Apps</a></li>
+                                <li class="breadcrumb-item text-muted active" aria-current="page">Add Category</li>
+                            </ol>
+                        </nav>
                     </div>
-                    <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div>
                         <form action="{{ route('storecategory') }}" method="POST">
                             @csrf
                             <div class="row mb-3">
@@ -34,7 +35,9 @@
                             </div>
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Add Category</button>
+                                    <button type="submit"
+                                        class="btn waves-effect waves-light btn-outline-primary">Add
+                                        Category</button>
                                 </div>
                             </div>
                         </form>

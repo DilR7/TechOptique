@@ -3,18 +3,28 @@
     Add Product - TechOptique
 @endsection
 @section('content')
-    <div class="container">
-        <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Page/</span> Add Product</h4>
-            <!-- Basic Layout -->
-            <div class="col-xxl">
-                <div class="card mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Add New Product</h5>
-                        <small class="text-muted float-end">Input Information</small>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Add Product</h4>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb m-0 p-0">
+                                <li class="breadcrumb-item"><a href="index.html" class="text-muted">Apps</a></li>
+                                <li class="breadcrumb-item text-muted active" aria-current="page">Add Product</li>
+                            </ol>
+                        </nav>
                     </div>
-                    <div class="card-body">
-                        <form action="{{route('storeproduct')}}" method="POST" enctype="multipart/form-data">
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <form action="{{ route('storeproduct') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Name</label>
@@ -44,7 +54,7 @@
                                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Short
                                     Description</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control2" name="product_short_des" id="product_short_des" cols="30" rows="10"></textarea>
+                                    <textarea class="form-control2" name="product_short_des" id="product_short_des" cols="40" rows="4"></textarea>
                                 </div>
                             </div>
 
@@ -52,7 +62,7 @@
                                 <label class="col-sm-2 col-form-label" for="basic-default-name">Product Long
                                     Description</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control2" name="product_long_des" id="product_long_des" cols="30" rows="10"></textarea>
+                                    <textarea class="form-control2" name="product_long_des" id="product_long_des" cols="40" rows="4"></textarea>
                                 </div>
                             </div>
 
@@ -76,7 +86,8 @@
                                         aria-label="Default select example">
                                         <option selected>Select Product Sub Category</option>
                                         @foreach ($subcategories as $subcategory)
-                                            <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name}}</option>
+                                            <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -85,13 +96,13 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="basic-default-name">Upload Product Image</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="file" id="product_img" name="product_img"/>
+                                    <input class="form-control" type="file" id="product_img" name="product_img" />
                                 </div>
                             </div>
 
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Add Product</button>
+                                    <button type="submit" class="btn waves-effect waves-light btn-outline-primary">Add Product</button>
                                 </div>
                             </div>
                         </form>

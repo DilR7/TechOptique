@@ -64,29 +64,6 @@ class ProductController extends Controller
         return redirect()->route('allproducts')->with('message', 'Product Added Succesfully!');
     }
 
-    public function editProductImg($id){
-        $product_info = Product::findOrFail($id);
-        return view('admin.editproductimg', compact('product_info'));
-    }
-
-    public function updateProductImg(Request $request){
-        $request->validate([
-            'product_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $id = $request->id;
-        $image = $request->file('product_img');
-        $image_name = hexdec(uniqid()).'.'. $image->getClientOriginalExtension();
-        $request->product_img->move(public_path('upload'),$image_name);
-        $image_url = 'upload/' . $image_name;
-
-        Product::findOrFail($id)->update([
-            'product_img' => $image_url,
-        ]);
-
-        return redirect()->route('allproducts')->with('message', 'Product Image Updated Succesfully!');
-    }
-
     public function editProduct($id){
         $product_info = Product::findOrFail($id);
 
@@ -94,8 +71,6 @@ class ProductController extends Controller
     }
 
     public function updateProduct(Request $request){
-        $productid = $request->id;
-
         $request->validate([
             'product_name' => 'required|unique:products',
             'price' => 'required',
@@ -104,13 +79,20 @@ class ProductController extends Controller
             'product_long_des' => 'required',
         ]);
 
+        $productid = $request->id;
+        $image = $request->file('product_img');
+        $image_name = hexdec(uniqid()).'.'. $image->getClientOriginalExtension();
+        $request->product_img->move(public_path('upload'),$image_name);
+        $image_url = 'upload/' . $image_name;
+
         Product::findOrFail($productid)->update([
             'product_name' => $request->product_name,
             'product_short_des' => $request->product_short_des,
             'product_long_des' => $request->product_long_des,
             'price' => $request->price,
             'quantity' => $request->quantity,
-            'slug' => strtolower(str_replace(' ','-', $request->product_name))
+            'slug' => strtolower(str_replace(' ','-', $request->product_name)),
+            'product_img' => $image_url
         ]);
 
         return redirect()->route('allproducts')->with('message', 'Product Information Updated Succesfully!');

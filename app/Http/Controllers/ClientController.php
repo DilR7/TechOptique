@@ -82,6 +82,7 @@ class ClientController extends Controller
                 'shipping_phoneNumber' => $shipping_address->phone_number,
                 'shipping_city' => $shipping_address->city_name,
                 'shipping_postalCode' => $shipping_address->postal_code,
+                'product_id' => $item->product_id,
                 'quantity' => $item->quantity,
                 'total_price' => $item->price,
             ]);

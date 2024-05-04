@@ -13,4 +13,10 @@ class OrderController extends Controller
         return view('admin.pendingorders', compact('pending_orders'));
     }
 
+    public function cancelOrder($id){
+        Order::findOrFail($id)->delete();
+
+        return redirect()->route('pendingorder')->with('message', 'Order Cancelled!');
+    }
+
 }
