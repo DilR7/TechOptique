@@ -587,8 +587,8 @@
                         <div class="furniture-ad__item h-100 bg-image"
                             data-background="{{ asset('homeV2/assets/imgs/furniture/ad/ad-discount.jpg') }}">
                             <div class="fad-content">
-                                <h6 class="text-white mb-20 text-uppercase">HOT DEAL LAPTOP</h6>
-                                <h2 class="text-capitalize text-white">Laptop limit offer <br> 30% Off</h2>
+                                <h6 class="text-white mb-20 text-uppercase">HOT DEAL</h6>
+                                <h2 class="text-capitalize text-white">limited offer <br> 30% Off</h2>
                                 <a class="border__btn-f mt-35" href="product-details.html">Buy Now<span><i
                                             class="fa-regular fa-angle-right"></i></span></a>
                             </div>
@@ -596,9 +596,9 @@
                     </div>
                     <div class="col-xxl-5 col-xl-6">
                         <div class="furniture-ad__item  h-100 bg-image"
-                            data-background="{{ asset('HomeV2/assets/imgs/furniture/ad/ad-timer.jpg') }}">
+                            data-background="{{ asset('homeV2/assets/imgs/furniture/ad/ad-timer.jpg') }}">
                             <div class="fad-content fad-timer text-center">
-                                <h6 class="text-white mb-20 text-uppercase">HOT DEAL Laptop</h6>
+                                <h6 class="text-white mb-20 text-uppercase">HOT DEAL </h6>
                                 <h2 class="text-capitalize text-white mb-30">Deals OF the Week</h2>
                                 <div class="countdown-wrapper">
                                     <ul>
@@ -620,7 +620,7 @@
 
         <!-- Testiminial area start -->
         <section class="furniture-testimonial section-space bg-image"
-            data-background="{{ asset('HomeV2/assets/imgs/furniture/testimonial/bg2.png') }}">
+            data-background="{{ asset('homeV2/assets/imgs/furniture/testimonial/bg2.png') }}">
             <div class="container">
                 <div class="section-title-wrapper-4 is-white mb-40 text-center">
                     <span class="section-subtitle-4 mb-10">Testimonials</span>

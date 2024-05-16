@@ -4,7 +4,7 @@
 
         <!-- Breadcrumb area start  -->
         <div class="breadcrumb__area theme-bg-1 p-relative z-index-11 pt-95 pb-95">
-            <div class="breadcrumb__thumb" data-background="{{ asset('HomeV2/assets/imgs/g2.jpg') }}"></div>
+            <div class="breadcrumb__thumb" data-background="{{ asset('homeV2/assets/imgs/g2.jpg') }}"></div>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xxl-12">

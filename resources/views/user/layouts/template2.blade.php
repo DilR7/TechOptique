@@ -345,10 +345,7 @@
                                         </div>
                                     @else
                                         <div class="banner-btn-wrapper furniture__btn-group">
-                                            <a class="border__btn-banner" href="{{ 'register' }}">Register
-                                                <a class="solid-btn" href="{{ route('login') }}">Login</a>
-
-                                            </a>
+                                            <a class="solid-btn" href="{{ route('login') }}">Login</a>
                                         </div>
                                     @endif
                                 </div>
