@@ -21,10 +21,6 @@ use App\Http\Controllers\Admin\SubCategoryController;
 |
 */
 
-// Route::get('/', function(){
-//     return view('welcome');
-// });
-
 Route::controller(HomeController::class)->group(function (){
     Route::get('/', 'index')->name('Home');
 });
@@ -33,12 +29,15 @@ Route::controller(ClientController::class)->group(function (){
     Route::get('/category/{id}/{slug}', 'categoryPage')->name('categorypage');
     Route::get('/product-details/{id}/{slug}', 'singleProduct')->name('singleproduct');
     Route::get('/new-release', 'newRelease')->name('newrelease');
+    Route::get('/contact-us', 'contactUs')->name('contactus');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function(){
     Route::controller(ClientController::class)->group(function (){
         Route::get('/add-to-cart', 'addToCart')->name('addtocart');
         Route::post('/add-product-to-cart', 'addProductToCart')->name('addproducttocart');
+        Route::get('/add-to-whislist', 'addToWishlist')->name('addtowishlist');
+        Route::post('/add-product-to-whislist', 'addProductToWishlist')->name('addproducttowishlist');
         Route::get('/shipping-address', 'getShippingAddress')->name('shippingaddress');
         Route::post('/add-shipping-address', 'addShippingAddress')->name('addshipingaddress');
         Route::post('/place-order', 'placeOrder')->name('placeorder');
@@ -49,6 +48,8 @@ Route::middleware(['auth', 'role:user'])->group(function(){
         Route::get('/todays-deal', 'todaysDeal')->name('todaysdeal');
         Route::get('/customer-service', 'customerService')->name('customerservice');
         Route::get('/remove-cart-item/{id}', 'removeCartItem')->name('removeitem');
+        Route::get('/remove-wishlist-item/{id}', 'removeWishlistItem')->name('removewishlistitem');
+        Route::post('/product-details/{id}/review','submitReview')->name('singleproduct');
     });
 });
 
@@ -87,6 +88,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/edit-product/{id}', 'editProduct')->name('editproduct');
         Route::post('/admin/update-product', 'updateProduct')->name('updateproduct');
         Route::get('/admin/delete-product/{id}', 'deleteProduct')->name('deleteproduct');
+        Route::get('/admin/get-subcategories/{categoryId}', 'getSubcategories')->name('admin.get-subcategories');
+
     });
 
     Route::controller(OrderController::class)->group(function(){

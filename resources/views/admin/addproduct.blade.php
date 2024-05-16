@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="basic-default-name">Select Sub Categorry</label>
+                                <label class="col-sm-2 col-form-label" for="basic-default-name">Select Sub Categorr</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" id="product_subcategory_id" name="product_subcategory_id"
                                         aria-label="Default select example">
@@ -102,7 +102,8 @@
 
                             <div class="row justify-content-end">
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn waves-effect waves-light btn-outline-primary">Add Product</button>
+                                    <button type="submit" class="btn waves-effect waves-light btn-outline-primary">Add
+                                        Product</button>
                                 </div>
                             </div>
                         </form>
@@ -111,4 +112,39 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var categoryDropdown = document.getElementById('product_category_id');
+            var subcategoryDropdown = document.getElementById('product_subcategory_id');
+
+            categoryDropdown.addEventListener('change', function() {
+                var categoryId = this.value;
+
+                // Clear existing options
+                subcategoryDropdown.innerHTML = '<option value="" selected>Loading...</option>';
+
+                // Fetch subcategories based on selected category
+                fetch("{{ route('admin.get-subcategories', '') }}/" + categoryId)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Populate subcategory dropdown with fetched subcategories
+                        subcategoryDropdown.innerHTML =
+                            '<option value="" selected>Select Product Sub Category</option>';
+                        data.forEach(function(subcategory) {
+                            var option = document.createElement('option');
+                            option.value = subcategory.id;
+                            option.text = subcategory.subcategory_name;
+                            subcategoryDropdown.appendChild(option);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching subcategories:', error);
+                        // Display error message in the subcategory dropdown
+                        subcategoryDropdown.innerHTML =
+                            '<option value="" selected>Error fetching subcategories</option>';
+                    });
+            });
+        });
+    </script>
 @endsection

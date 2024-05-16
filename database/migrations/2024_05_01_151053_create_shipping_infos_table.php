@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('shipping_infos', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('phone_number');
-            $table->string('city_name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('address');
+            $table->string('city');
+            $table->string('country');
+            $table->string('email');
             $table->string('postal_code');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }

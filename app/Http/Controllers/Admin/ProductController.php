@@ -108,4 +108,10 @@ class ProductController extends Controller
          
         return redirect()->route('allproducts')->with('message', 'Product Deleted Succesfully!');
     }
+
+    public function getSubcategories($categoryId)
+    {
+    $subcategories = Subcategory::where('category_id', $categoryId)->get();
+    return response()->json($subcategories);
+    }   
 }
