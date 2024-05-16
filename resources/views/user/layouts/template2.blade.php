@@ -21,15 +21,15 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dashboardV2/assets/images/slogo.png') }}">
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="{{ secure_asset('homeV2/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('homeV2/assets/css/meanmenu.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('homeV2/assets/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('homeV2/assets/css/swiper.min.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('homeV2/assets/css/slick.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('homeV2/assets/css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('homeV2/assets/css/fontawesome-pro.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('homeV2/assets/css/spacing.css') }}">
-    <link rel="stylesheet" href="{{ secure_asset('homeV2/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('homeV2/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('homeV2/assets/css/meanmenu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('homeV2/assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('homeV2/assets/css/swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('homeV2/assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('homeV2/assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('homeV2/assets/css/fontawesome-pro.css') }}">
+    <link rel="stylesheet" href="{{ asset('homeV2/assets/css/spacing.css') }}">
+    <link rel="stylesheet" href="{{ asset('homeV2/assets/css/main.css') }}">
 
     <style>
         .rate {
@@ -74,6 +74,7 @@
         .rate>label:hover~input:checked~label {
             color: #c59b08;
         }
+
     </style>
 </head>
 
