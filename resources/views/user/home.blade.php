@@ -632,6 +632,7 @@
                         @foreach ($rtc as $rt)
                             @php
                                 $user_name = App\Models\User::where('id', $rt->user_id)->value('name');
+                                $product_name = App\Models\Product::where('id', $rt->product_id)->value('product_name')
                             @endphp
                             <div class="swiper-slide">
                                 <div class="furniture-testimonial__item">
@@ -647,6 +648,7 @@
                                                 @endfor
                                             </div>
                                             <h5>{{ $user_name }}</h5>
+                                            <h6>{{ $product_name }}</h6>
                                         </div>
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
