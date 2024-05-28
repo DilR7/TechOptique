@@ -14,7 +14,7 @@
                                         <div class="banner-content-4 furniture__content">
                                             <span>New Arrival...</span>
                                             <h2 class="banner-title-4">Enhance <br> Your Electronic Experience</h2>
-                                            <p>A Electronic e-commerce company operates in the digital space, offering a
+                                            <p>An Electronic e-commerce company operates in the digital space, offering a
                                                 wide
                                                 range
                                                 of electronic products for sale
@@ -725,7 +725,7 @@
                             <div class="support-content">
                                 <h3>Exclusive offers for you</h3>
                                 <p>Get weekly deals, valuable health information and more.</p>
-                                <a class="join-btn furniture-btn" href="#">sing up<span><i
+                                <a class="join-btn furniture-btn" href="#">sign up<span><i
                                             class="fa-regular fa-angle-right"></i></span></a>
                             </div>
                         </div>

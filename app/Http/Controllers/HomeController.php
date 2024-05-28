@@ -15,6 +15,7 @@ class HomeController extends Controller
 {
     public function index(){
         $allproducts = Product::latest()->get();
+        $products = Product::latest();
         $user = Auth::user();
 
         $rtc = Rating:: get();
@@ -30,6 +31,8 @@ class HomeController extends Controller
         });
     
         $topRatedProducts = $sortedProducts->take(6);
+
+        
 
     return view('user.home', compact('allproducts', 'user', 'averageRatings', 'topRatedProducts', 'rtc'));
     }

@@ -74,7 +74,6 @@
         .rate>label:hover~input:checked~label {
             color: #c59b08;
         }
-
     </style>
 </head>
 
@@ -240,21 +239,18 @@
                                                     </ul>
                                                 </li>
                                                 <li class="has-dropdown">
-                                                    <a href="blog.html">Account</a>
+                                                    <a href="#">Account</a>
                                                     <ul class="submenu">
+                                                        <li><a href="blog-grid.html">Profile</a></li>
                                                         <li>
                                                             <form method="POST" action="{{ route('logout') }}">
                                                                 @csrf
-
-                                                                <x-dropdown-link :href="route('logout')"
-                                                                    onclick="event.preventDefault();
-                                                                                            this.closest('form').submit();">
+                                                                <x-dropdown-link
+                                                                    onclick="event.preventDefault(); this.closest('form').submit();">
                                                                     {{ __('Log Out') }}
                                                                 </x-dropdown-link>
                                                             </form>
                                                         </li>
-                                                        <li><a href="blog-grid.html">Blog Grid</a></li>
-                                                        <li><a href="blog-details.html">Blog Details</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
@@ -267,8 +263,8 @@
                             </div>
                             <div class="header-right d-inline-flex align-items-center justify-content-end">
                                 <div class="header-search d-none d-xxl-block">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search...">
+                                    <form action="{{ route('categorypage', [$category->id, $category->slug]) }}">
+                                        <input type="text" placeholder="Search..." name="search">
                                         <button type="submit">
                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">

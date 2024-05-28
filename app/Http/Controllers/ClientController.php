@@ -14,11 +14,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
-    public function categoryPage($id){
-        $category = Category::findOrFail($id);
-        $products = Product::Where('product_category_id', $id)->latest()->get();
-        return view('user.category', compact('category', 'products'));
+    public function categoryPage($id)
+    {
+    $category = Category::findOrFail($id);
+    $products = Product::where('product_category_id', $id)->latest();
+
+    if (request()->has('search')) {
+        $searchTerm = request('search');
+        $products->where('product_name', 'like', '%' . $searchTerm . '%');
     }
+
+    $products = $products->get();
+
+    return view('user.category', compact('category', 'products'));
+    }   
 
     public function singleProduct($id){
         $product = Product::findOrFail($id);
